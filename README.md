@@ -10,7 +10,6 @@
 
 - đây là 'code được dịch' của nextJS (cái mà brower sẽ chạy)
 - public là nơi chứa các static file (img, css, js)
--
 
 2. tsconfig.json
 
@@ -26,7 +25,7 @@
 
 - Đối với dữ liệu **ít thay đổi**: logo, category... => dùng server component (render trước ở server)
 
-- Đối với dữ liệu thay đổi **thường xuyên, phụ thuộc vào tương tác của người dùng** => client component\
+- Đối với dữ liệu thay đổi **thường xuyên, phụ thuộc vào tương tác của người dùng** => client component
 
 ## Tại sao lại chia tắt Server/Client Component
 
@@ -55,7 +54,6 @@ export default Products;
 ### component Link
 
 - khi muốn route mà không phải load lại trang thì chúng ta sẽ dùng thêm thư viện Link
--
 
 ```
 import Link from "next/link";
@@ -112,3 +110,28 @@ export default Facebook;
 - muốn chia layout cho dự án thì **bắt buộc** phải đặt tên file là _*layout*_ chứ không được đặt bằng những cái tên khác
 
 - trong file _*layout*_
+
+# module
+
+- các file css có đuôi tiền tố _*.module*_ sẽ có nhiệm vụ đặt id cho từng className, làm như vậy để dù những class có tên trùng nhau nhưng sẽ có css khác nhau. Ví dụ như ở dưới đây, cả 2 thẻ div đều có class là red, nhưng mỗi thẻ div có một màu khác nhau
+
+_*app.module.css*_
+
+```
+
+// chèn file css từ folder styles
+import x from "@/styles/app.module.css";
+import y from "@/styles/app2.module.css";
+
+
+const Facebook = () => {
+  return (
+    <>
+      <div className={x["red"]}>FACEBOOK</div>
+      <div className={y["red"]}>META</div>
+    </>
+  );
+};
+
+export default Facebook;
+```
